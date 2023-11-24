@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cguhny2mw734t"]
+
+[ext_resource type="Script" path="res://resources_godot/library/player_fps/script/player.gd" id="1_0fib8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qcb4i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c8pif"]
+height = 1.0
+
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 1.92652, 0)
+script = ExtResource("1_0fib8")
+
+[node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qcb4i")
+
+[node name="CrouchingCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.03, 0, 0, 0, 1.03, 0, 0, 0, 1.03, 0, -0.403, 0)
+shape = SubResource("CapsuleShape3D_c8pif")
+disabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+
+[node name="nek" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="head" type="Node3D" parent="nek"]
+
+[node name="eyes" type="Node3D" parent="nek/head"]
+
+[node name="Camera3D" type="Camera3D" parent="nek/head/eyes"]
+transform = Transform3D(0.555556, 0, 0, 0, 0.555556, 0, 0, 0, 0.555556, 0, -0.139104, 0)
